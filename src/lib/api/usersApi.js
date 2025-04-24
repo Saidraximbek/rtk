@@ -7,19 +7,17 @@ const postsApi = createApi({
     baseUrl: "https://fakestoreapi.com",
   }),
   endpoints: (builder) => ({
-   
-      getAllPosts: builder.query({
-        query: () => "/products",
+    getAllPosts: builder.query({
+      query: () => "/products",
+    }),
+    getPostById: builder.query({
+      query: (id) => `products/${id}`,
+    }),
+    deletePost: builder.mutation({
+      query: (id) => ({
+        url: `products/${id}`,
+        method: "DELETE",
       }),
-      getPostById: builder.query({
-        query: (id) => `products/${id}`,
-      }),
-      deletePost: builder.mutation({
-        query: (id) => ({
-          url: `products/${id}`,
-          method: "DELETE",
-        }),
-     
     }),
   }),
 });

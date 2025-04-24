@@ -1,8 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PostCard = ({ p }) => {
   return (
-    <div className="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col ">
+    <Link
+      to={`/product/${p.id}`}
+      className="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col "
+    >
       <img
         src={p.image}
         alt={p.title}
@@ -18,7 +22,7 @@ const PostCard = ({ p }) => {
           ⭐ {p.rating?.rate} ({p.rating?.count})
         </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
