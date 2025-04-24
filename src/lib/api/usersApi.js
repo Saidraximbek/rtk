@@ -1,25 +1,29 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+console.log("https://fakestoreapi.com/products/1");
 
 const postsApi = createApi({
   reducerPath: "postsApi",
-  baseQuery: fetchBaseQuery({baseUrl: "https://jsonplaceholder.typicode.com/posts"}),
   baseQuery: fetchBaseQuery({
-    getPosts: builder.query({
-      query: () => "/",
-    }),
-    getPost: builder.query({
-      query: (id) => `/${id}`,
-    }),
-    deletePost: builder.mutation({
-      query: (id) => ({
-        url: `/${id}`,
-        method: "DELETE",
+    baseUrl: "https://fakestoreapi.com",
+  }),
+  endpoints: (builder) => ({
+   
+      getAllPosts: builder.query({
+        query: () => "/products",
       }),
+      getPostById: builder.query({
+        query: (id) => `products/${id}`,
+      }),
+      deletePost: builder.mutation({
+        query: (id) => ({
+          url: `products/${id}`,
+          method: "DELETE",
+        }),
+     
     }),
   }),
 });
 
-export const { useGetPostQuery, useGetPostsQuery, useDeletePostMutation } =
-  postsApi;
+export const { useGetAllPostsQuery, useGetPostByIdQuery } = postsApi;
 
 export default postsApi;

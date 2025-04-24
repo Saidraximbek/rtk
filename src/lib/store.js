@@ -1,3 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postsReducer from "./slices/postsSlice"
-// import pos/
+
+import postsApi from "./api/usersApi";
+
+const store = configureStore({
+  reducer: {
+    [postsApi.reducerPath]: postsApi.reducer,
+  },
+  middleware: (getDefaultMiddlware) =>
+    getDefaultMiddlware().concat(postsApi.middleware),
+});
+
+export default store;

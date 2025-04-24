@@ -1,11 +1,14 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
 
 const App = () => {
   return (
-    <div className='text-amber-950 flex flex-col justify-center items-center gap-7'>
-      <h2>Posts</h2>
-      
-    </div>
+<Routes>
+  <Route path='/' element={<Home />} />
+
+  {/* <Route path='/post/:id' element={<Home />} /> */}
+</Routes>
   )
 }
 
